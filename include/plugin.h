@@ -21,6 +21,14 @@
  */
 
 #define PLUGIN_API_VERSION 6
+
+/* PLUGIN_VERSION is set by the build from the VERSION file. The string is
+ * exported from every plugin .so as neonano_plugin_version, so the version
+ * can be read from the built file (dlsym or strings). */
+#ifndef PLUGIN_VERSION
+#define PLUGIN_VERSION "unknown"
+#endif
+const char neonano_plugin_version[] = PLUGIN_VERSION;
 #define PLUGIN_ENTRY       "neonano_plugin_init"
 
 /* Keys delivered to a pane: a typed character is PLUGIN_KEY_TEXT | codepoint.
